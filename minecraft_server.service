@@ -1,0 +1,21 @@
+[Unit]
+Description=Private Minecraft Service
+After=network.target
+
+[Service]
+Type=simple
+User=matt
+WorkingDirectory=/home/$USER/RapidMC
+
+ExecStart=/home/matt/HomeMC/start.sh
+ExecStop=/home/matt/HomeMC/stop.sh
+
+Restart=on-failure
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=minecraft_server_1
+
+[Install]
+WantedBy=multi-user.target
